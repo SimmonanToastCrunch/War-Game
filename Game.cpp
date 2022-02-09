@@ -8,6 +8,10 @@ Game::Game(const char* title, int ww, int wh, Uint32 flags)
 	{
 		cout << "SDL failed to init! Error: " << SDL_GetError() << "\n";
 	}
+	if (IMG_Init(IMG_INIT_PNG) == NULL)
+	{
+		cout << "SDL_img failed to init! Error: " << SDL_GetError() << "\n";
+	}
 	window = SDL_CreateWindow
 	(
 		title,
