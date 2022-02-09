@@ -1,7 +1,9 @@
 #pragma once
-#include <SDL.h>
 #include <SDL_image.h>
+#include <vector>
 #include <iostream>
+
+#include "City.h"
 
 
 class Game
@@ -18,6 +20,10 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	SDL_Event sdlevent{};
+
+	SDL_Texture* city_texture = nullptr;
+
+	std::vector<City> city_vec = { City(320, 320) };
 
 	bool running{ 0 };
 

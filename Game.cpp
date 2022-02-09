@@ -40,6 +40,7 @@ Game::Game(const char* title, int ww, int wh, Uint32 flags)
 	}
 
 	running = true;
+	city_texture = IMG_LoadTexture(renderer, "assets/art/circle.png");
 	SDL_SetRenderDrawColor(renderer, 235, 235, 235, 255);
 }
 
@@ -60,7 +61,20 @@ void Game::handle()
 			running = false;
 		}
 
+		
 
 	}
+	SDL_Rect dst{};
+	dst.w = 38;
+	dst.h = 38;
+	if (!city_vec.empty())
+		for (int i = 0; i != city_vec.size(); i++)
+		{
+			city_vec[i].get_position(dst.x, dst.y);
+			
+			SDL_RenderCopy(renderer, city_texture, NULL, &dst);
+		}
+	
+
 	SDL_RenderPresent(renderer);
 }
